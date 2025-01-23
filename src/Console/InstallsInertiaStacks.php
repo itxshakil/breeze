@@ -27,7 +27,7 @@ trait InstallsInertiaStacks
                 '@vitejs/plugin-vue' => '^5.0.0',
                 'autoprefixer' => '^10.4.12',
                 'postcss' => '^8.4.31',
-                'tailwindcss' => '^3.2.1',
+                'tailwindcss' => '^4.0.0',
                 'vue' => '^3.4.0',
             ] + $packages;
         });
@@ -239,7 +239,7 @@ trait InstallsInertiaStacks
                 '@vitejs/plugin-react' => '^4.2.0',
                 'autoprefixer' => '^10.4.12',
                 'postcss' => '^8.4.31',
-                'tailwindcss' => '^3.2.1',
+                'tailwindcss' => '^4.0.0',
                 'react' => '^18.2.0',
                 'react-dom' => '^18.2.0',
             ] + $packages;
