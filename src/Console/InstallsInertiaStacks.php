@@ -66,7 +66,7 @@ trait InstallsInertiaStacks
                     ];
                 });
 
-                copy(__DIR__ . '/../../stubs/inertia-vue-ts/.eslintrc.cjs', base_path('.eslintrc.cjs'));
+                copy(__DIR__.'/../../stubs/inertia-vue-ts/.eslintrc.cjs', base_path('.eslintrc.cjs'));
             } else {
                 $this->updateNodeScripts(function ($scripts) {
                     return $scripts + [
@@ -74,22 +74,22 @@ trait InstallsInertiaStacks
                     ];
                 });
 
-                copy(__DIR__ . '/../../stubs/inertia-vue/.eslintrc.cjs', base_path('.eslintrc.cjs'));
+                copy(__DIR__.'/../../stubs/inertia-vue/.eslintrc.cjs', base_path('.eslintrc.cjs'));
             }
 
-            copy(__DIR__ . '/../../stubs/inertia-common/.prettierrc', base_path('.prettierrc'));
+            copy(__DIR__.'/../../stubs/inertia-common/.prettierrc', base_path('.prettierrc'));
         }
 
         // Providers...
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-common/app/Providers', app_path('Providers'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-common/app/Providers', app_path('Providers'));
 
         // Controllers...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Controllers'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-common/app/Http/Controllers', app_path('Http/Controllers'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-common/app/Http/Controllers', app_path('Http/Controllers'));
 
         // Requests...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/default/app/Http/Requests', app_path('Http/Requests'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/app/Http/Requests', app_path('Http/Requests'));
 
         // Middleware...
         $this->installMiddleware([
@@ -98,10 +98,10 @@ trait InstallsInertiaStacks
         ]);
 
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Middleware'));
-        copy(__DIR__ . '/../../stubs/inertia-common/app/Http/Middleware/HandleInertiaRequests.php', app_path('Http/Middleware/HandleInertiaRequests.php'));
+        copy(__DIR__.'/../../stubs/inertia-common/app/Http/Middleware/HandleInertiaRequests.php', app_path('Http/Middleware/HandleInertiaRequests.php'));
 
         // Views...
-        copy(__DIR__ . '/../../stubs/inertia-vue/resources/views/app.blade.php', resource_path('views/app.blade.php'));
+        copy(__DIR__.'/../../stubs/inertia-vue/resources/views/app.blade.php', resource_path('views/app.blade.php'));
 
         @unlink(resource_path('views/welcome.blade.php'));
 
@@ -111,21 +111,21 @@ trait InstallsInertiaStacks
         (new Filesystem)->ensureDirectoryExists(resource_path('js/Pages'));
 
         if ($this->option('typescript')) {
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/Components', resource_path('js/Components'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/Layouts', resource_path('js/Layouts'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/Pages', resource_path('js/Pages'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/types', resource_path('js/types'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-vue-ts/resources/js/Components', resource_path('js/Components'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-vue-ts/resources/js/Layouts', resource_path('js/Layouts'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-vue-ts/resources/js/Pages', resource_path('js/Pages'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-vue-ts/resources/js/types', resource_path('js/types'));
         } else {
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue/resources/js/Components', resource_path('js/Components'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue/resources/js/Layouts', resource_path('js/Layouts'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-vue/resources/js/Pages', resource_path('js/Pages'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-vue/resources/js/Components', resource_path('js/Components'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-vue/resources/js/Layouts', resource_path('js/Layouts'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-vue/resources/js/Pages', resource_path('js/Pages'));
         }
 
         if (! $this->option('dark')) {
             $this->removeDarkClasses((new Finder)
-                    ->in(resource_path('js'))
-                    ->name('*.vue')
-                    ->notName('Welcome.vue')
+                ->in(resource_path('js'))
+                ->name('*.vue')
+                ->notName('Welcome.vue')
             );
         }
 
@@ -135,22 +135,22 @@ trait InstallsInertiaStacks
         }
 
         if ($this->option('pest')) {
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-common/pest-tests/Feature', base_path('tests/Feature'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-common/pest-tests/Feature', base_path('tests/Feature'));
         } else {
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-common/tests/Feature', base_path('tests/Feature'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-common/tests/Feature', base_path('tests/Feature'));
         }
 
         // Routes...
-        copy(__DIR__ . '/../../stubs/inertia-common/routes/web.php', base_path('routes/web.php'));
-        copy(__DIR__ . '/../../stubs/inertia-common/routes/auth.php', base_path('routes/auth.php'));
+        copy(__DIR__.'/../../stubs/inertia-common/routes/web.php', base_path('routes/web.php'));
+        copy(__DIR__.'/../../stubs/inertia-common/routes/auth.php', base_path('routes/auth.php'));
 
         // Tailwind / Vite...
-        copy(__DIR__ . '/../../stubs/inertia-vue/resources/css/app.css', resource_path('css/app.css'));
-        copy(__DIR__ . '/../../stubs/inertia-vue/vite.config.js', base_path('vite.config.js'));
+        copy(__DIR__.'/../../stubs/inertia-vue/resources/css/app.css', resource_path('css/app.css'));
+        copy(__DIR__.'/../../stubs/inertia-vue/vite.config.js', base_path('vite.config.js'));
 
         if ($this->option('typescript')) {
-            copy(__DIR__ . '/../../stubs/inertia-vue-ts/tsconfig.json', base_path('tsconfig.json'));
-            copy(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/app.ts', resource_path('js/app.ts'));
+            copy(__DIR__.'/../../stubs/inertia-vue-ts/tsconfig.json', base_path('tsconfig.json'));
+            copy(__DIR__.'/../../stubs/inertia-vue-ts/resources/js/app.ts', resource_path('js/app.ts'));
 
             if (file_exists(resource_path('js/app.js'))) {
                 unlink(resource_path('js/app.js'));
@@ -164,8 +164,8 @@ trait InstallsInertiaStacks
             $this->replaceInFile('.js', '.ts', base_path('vite.config.js'));
             $this->replaceInFile('.js', '.ts', resource_path('views/app.blade.php'));
         } else {
-            copy(__DIR__ . '/../../stubs/inertia-common/jsconfig.json', base_path('jsconfig.json'));
-            copy(__DIR__ . '/../../stubs/inertia-vue/resources/js/app.js', resource_path('js/app.js'));
+            copy(__DIR__.'/../../stubs/inertia-common/jsconfig.json', base_path('jsconfig.json'));
+            copy(__DIR__.'/../../stubs/inertia-vue/resources/js/app.js', resource_path('js/app.js'));
         }
 
         if ($this->option('ssr')) {
@@ -202,17 +202,17 @@ trait InstallsInertiaStacks
         });
 
         if ($this->option('typescript')) {
-            copy(__DIR__ . '/../../stubs/inertia-vue-ts/resources/js/ssr.ts', resource_path('js/ssr.ts'));
-            $this->replaceInFile("input: 'resources/js/app.ts',", "input: 'resources/js/app.ts'," . PHP_EOL . "            ssr: 'resources/js/ssr.ts',", base_path('vite.config.js'));
+            copy(__DIR__.'/../../stubs/inertia-vue-ts/resources/js/ssr.ts', resource_path('js/ssr.ts'));
+            $this->replaceInFile("input: 'resources/js/app.ts',", "input: 'resources/js/app.ts',".PHP_EOL."            ssr: 'resources/js/ssr.ts',", base_path('vite.config.js'));
         } else {
-            copy(__DIR__ . '/../../stubs/inertia-vue/resources/js/ssr.js', resource_path('js/ssr.js'));
-            $this->replaceInFile("input: 'resources/js/app.js',", "input: 'resources/js/app.js'," . PHP_EOL . "            ssr: 'resources/js/ssr.js',", base_path('vite.config.js'));
+            copy(__DIR__.'/../../stubs/inertia-vue/resources/js/ssr.js', resource_path('js/ssr.js'));
+            $this->replaceInFile("input: 'resources/js/app.js',", "input: 'resources/js/app.js',".PHP_EOL."            ssr: 'resources/js/ssr.js',", base_path('vite.config.js'));
         }
 
         $this->configureZiggyForSsr();
 
         $this->replaceInFile('vite build', 'vite build && vite build --ssr', base_path('package.json'));
-        $this->replaceInFile('/node_modules', '/bootstrap/ssr' . PHP_EOL . '/node_modules', base_path('.gitignore'));
+        $this->replaceInFile('/node_modules', '/bootstrap/ssr'.PHP_EOL.'/node_modules', base_path('.gitignore'));
     }
 
     /**
@@ -280,7 +280,7 @@ trait InstallsInertiaStacks
                     ];
                 });
 
-                copy(__DIR__ . '/../../stubs/inertia-react-ts/.eslintrc.json', base_path('.eslintrc.json'));
+                copy(__DIR__.'/../../stubs/inertia-react-ts/.eslintrc.json', base_path('.eslintrc.json'));
             } else {
                 $this->updateNodeScripts(function ($scripts) {
                     return $scripts + [
@@ -288,22 +288,22 @@ trait InstallsInertiaStacks
                     ];
                 });
 
-                copy(__DIR__ . '/../../stubs/inertia-react/.eslintrc.json', base_path('.eslintrc.json'));
+                copy(__DIR__.'/../../stubs/inertia-react/.eslintrc.json', base_path('.eslintrc.json'));
             }
 
-            copy(__DIR__ . '/../../stubs/inertia-common/.prettierrc', base_path('.prettierrc'));
+            copy(__DIR__.'/../../stubs/inertia-common/.prettierrc', base_path('.prettierrc'));
         }
 
         // Providers...
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-common/app/Providers', app_path('Providers'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-common/app/Providers', app_path('Providers'));
 
         // Controllers...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Controllers'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-common/app/Http/Controllers', app_path('Http/Controllers'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-common/app/Http/Controllers', app_path('Http/Controllers'));
 
         // Requests...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/default/app/Http/Requests', app_path('Http/Requests'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/app/Http/Requests', app_path('Http/Requests'));
 
         // Middleware...
         $this->installMiddleware([
@@ -312,10 +312,10 @@ trait InstallsInertiaStacks
         ]);
 
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Middleware'));
-        copy(__DIR__ . '/../../stubs/inertia-common/app/Http/Middleware/HandleInertiaRequests.php', app_path('Http/Middleware/HandleInertiaRequests.php'));
+        copy(__DIR__.'/../../stubs/inertia-common/app/Http/Middleware/HandleInertiaRequests.php', app_path('Http/Middleware/HandleInertiaRequests.php'));
 
         // Views...
-        copy(__DIR__ . '/../../stubs/inertia-react/resources/views/app.blade.php', resource_path('views/app.blade.php'));
+        copy(__DIR__.'/../../stubs/inertia-react/resources/views/app.blade.php', resource_path('views/app.blade.php'));
 
         @unlink(resource_path('views/welcome.blade.php'));
 
@@ -325,21 +325,21 @@ trait InstallsInertiaStacks
         (new Filesystem)->ensureDirectoryExists(resource_path('js/Pages'));
 
         if ($this->option('typescript')) {
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/Components', resource_path('js/Components'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/Layouts', resource_path('js/Layouts'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/Pages', resource_path('js/Pages'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/types', resource_path('js/types'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-react-ts/resources/js/Components', resource_path('js/Components'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-react-ts/resources/js/Layouts', resource_path('js/Layouts'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-react-ts/resources/js/Pages', resource_path('js/Pages'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-react-ts/resources/js/types', resource_path('js/types'));
         } else {
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react/resources/js/Components', resource_path('js/Components'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react/resources/js/Layouts', resource_path('js/Layouts'));
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-react/resources/js/Pages', resource_path('js/Pages'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-react/resources/js/Components', resource_path('js/Components'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-react/resources/js/Layouts', resource_path('js/Layouts'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-react/resources/js/Pages', resource_path('js/Pages'));
         }
 
         if (! $this->option('dark')) {
             $this->removeDarkClasses((new Finder)
-                    ->in(resource_path('js'))
-                    ->name(['*.jsx', '*.tsx'])
-                    ->notName(['Welcome.jsx', 'Welcome.tsx'])
+                ->in(resource_path('js'))
+                ->name(['*.jsx', '*.tsx'])
+                ->notName(['Welcome.jsx', 'Welcome.tsx'])
             );
         }
 
@@ -349,22 +349,22 @@ trait InstallsInertiaStacks
         }
 
         if ($this->option('pest')) {
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-common/pest-tests/Feature', base_path('tests/Feature'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-common/pest-tests/Feature', base_path('tests/Feature'));
         } else {
-            (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia-common/tests/Feature', base_path('tests/Feature'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia-common/tests/Feature', base_path('tests/Feature'));
         }
 
         // Routes...
-        copy(__DIR__ . '/../../stubs/inertia-common/routes/web.php', base_path('routes/web.php'));
-        copy(__DIR__ . '/../../stubs/inertia-common/routes/auth.php', base_path('routes/auth.php'));
+        copy(__DIR__.'/../../stubs/inertia-common/routes/web.php', base_path('routes/web.php'));
+        copy(__DIR__.'/../../stubs/inertia-common/routes/auth.php', base_path('routes/auth.php'));
 
         // Tailwind / Vite...
-        copy(__DIR__ . '/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
-        copy(__DIR__ . '/../../stubs/inertia-react/vite.config.js', base_path('vite.config.js'));
+        copy(__DIR__.'/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
+        copy(__DIR__.'/../../stubs/inertia-react/vite.config.js', base_path('vite.config.js'));
 
         if ($this->option('typescript')) {
-            copy(__DIR__ . '/../../stubs/inertia-react-ts/tsconfig.json', base_path('tsconfig.json'));
-            copy(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/app.tsx', resource_path('js/app.tsx'));
+            copy(__DIR__.'/../../stubs/inertia-react-ts/tsconfig.json', base_path('tsconfig.json'));
+            copy(__DIR__.'/../../stubs/inertia-react-ts/resources/js/app.tsx', resource_path('js/app.tsx'));
 
             if (file_exists(resource_path('js/bootstrap.js'))) {
                 rename(resource_path('js/bootstrap.js'), resource_path('js/bootstrap.ts'));
@@ -374,8 +374,8 @@ trait InstallsInertiaStacks
             $this->replaceInFile('.jsx', '.tsx', base_path('vite.config.js'));
             $this->replaceInFile('.jsx', '.tsx', resource_path('views/app.blade.php'));
         } else {
-            copy(__DIR__ . '/../../stubs/inertia-common/jsconfig.json', base_path('jsconfig.json'));
-            copy(__DIR__ . '/../../stubs/inertia-react/resources/js/app.jsx', resource_path('js/app.jsx'));
+            copy(__DIR__.'/../../stubs/inertia-common/jsconfig.json', base_path('jsconfig.json'));
+            copy(__DIR__.'/../../stubs/inertia-react/resources/js/app.jsx', resource_path('js/app.jsx'));
         }
 
         if (file_exists(resource_path('js/app.js'))) {
@@ -412,19 +412,19 @@ trait InstallsInertiaStacks
     protected function installInertiaReactSsrStack()
     {
         if ($this->option('typescript')) {
-            copy(__DIR__ . '/../../stubs/inertia-react-ts/resources/js/ssr.tsx', resource_path('js/ssr.tsx'));
-            $this->replaceInFile("input: 'resources/js/app.tsx',", "input: 'resources/js/app.tsx'," . PHP_EOL . "            ssr: 'resources/js/ssr.tsx',", base_path('vite.config.js'));
+            copy(__DIR__.'/../../stubs/inertia-react-ts/resources/js/ssr.tsx', resource_path('js/ssr.tsx'));
+            $this->replaceInFile("input: 'resources/js/app.tsx',", "input: 'resources/js/app.tsx',".PHP_EOL."            ssr: 'resources/js/ssr.tsx',", base_path('vite.config.js'));
             $this->configureReactHydrateRootForSsr(resource_path('js/app.tsx'));
         } else {
-            copy(__DIR__ . '/../../stubs/inertia-react/resources/js/ssr.jsx', resource_path('js/ssr.jsx'));
-            $this->replaceInFile("input: 'resources/js/app.jsx',", "input: 'resources/js/app.jsx'," . PHP_EOL . "            ssr: 'resources/js/ssr.jsx',", base_path('vite.config.js'));
+            copy(__DIR__.'/../../stubs/inertia-react/resources/js/ssr.jsx', resource_path('js/ssr.jsx'));
+            $this->replaceInFile("input: 'resources/js/app.jsx',", "input: 'resources/js/app.jsx',".PHP_EOL."            ssr: 'resources/js/ssr.jsx',", base_path('vite.config.js'));
             $this->configureReactHydrateRootForSsr(resource_path('js/app.jsx'));
         }
 
         $this->configureZiggyForSsr();
 
         $this->replaceInFile('vite build', 'vite build && vite build --ssr', base_path('package.json'));
-        $this->replaceInFile('/node_modules', '/bootstrap/ssr' . PHP_EOL . '/node_modules', base_path('.gitignore'));
+        $this->replaceInFile('/node_modules', '/bootstrap/ssr'.PHP_EOL.'/node_modules', base_path('.gitignore'));
     }
 
     /**
