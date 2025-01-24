@@ -92,8 +92,6 @@ trait InstallsLivewireStack
         copy(__DIR__ . '/../../stubs/livewire-common/routes/auth.php', base_path('routes/auth.php'));
 
         // Tailwind / Vite...
-        copy(__DIR__ . '/../../stubs/default/tailwind.config.js', base_path('tailwind.config.js'));
-        copy(__DIR__ . '/../../stubs/default/postcss.config.js', base_path('postcss.config.js'));
         copy(__DIR__ . '/../../stubs/default/vite.config.js', base_path('vite.config.js'));
         copy(__DIR__ . '/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
 

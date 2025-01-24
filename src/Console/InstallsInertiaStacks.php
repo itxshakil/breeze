@@ -146,8 +146,6 @@ trait InstallsInertiaStacks
 
         // Tailwind / Vite...
         copy(__DIR__ . '/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
-        copy(__DIR__ . '/../../stubs/default/postcss.config.js', base_path('postcss.config.js'));
-        copy(__DIR__ . '/../../stubs/inertia-common/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__ . '/../../stubs/inertia-vue/vite.config.js', base_path('vite.config.js'));
 
         if ($this->option('typescript')) {
@@ -362,8 +360,6 @@ trait InstallsInertiaStacks
 
         // Tailwind / Vite...
         copy(__DIR__ . '/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
-        copy(__DIR__ . '/../../stubs/default/postcss.config.js', base_path('postcss.config.js'));
-        copy(__DIR__ . '/../../stubs/inertia-common/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__ . '/../../stubs/inertia-react/vite.config.js', base_path('vite.config.js'));
 
         if ($this->option('typescript')) {
@@ -377,12 +373,9 @@ trait InstallsInertiaStacks
             $this->replaceInFile('"vite build', '"tsc && vite build', base_path('package.json'));
             $this->replaceInFile('.jsx', '.tsx', base_path('vite.config.js'));
             $this->replaceInFile('.jsx', '.tsx', resource_path('views/app.blade.php'));
-            $this->replaceInFile('.vue', '.tsx', base_path('tailwind.config.js'));
         } else {
             copy(__DIR__ . '/../../stubs/inertia-common/jsconfig.json', base_path('jsconfig.json'));
             copy(__DIR__ . '/../../stubs/inertia-react/resources/js/app.jsx', resource_path('js/app.jsx'));
-
-            $this->replaceInFile('.vue', '.jsx', base_path('tailwind.config.js'));
         }
 
         if (file_exists(resource_path('js/app.js'))) {
