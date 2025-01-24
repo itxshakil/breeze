@@ -145,7 +145,7 @@ trait InstallsInertiaStacks
         copy(__DIR__ . '/../../stubs/inertia-common/routes/auth.php', base_path('routes/auth.php'));
 
         // Tailwind / Vite...
-        copy(__DIR__ . '/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
+        copy(__DIR__ . '/../../stubs/inertia-vue/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__ . '/../../stubs/inertia-vue/vite.config.js', base_path('vite.config.js'));
 
         if ($this->option('typescript')) {
